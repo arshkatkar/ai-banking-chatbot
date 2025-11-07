@@ -1,0 +1,113 @@
+.data-table {
+  margin-top: 25px;
+  background: #fafafa;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  overflow-x: auto; /* ✅ allows scrolling on smaller screens */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* ✅ ensures columns stay fixed width */
+}
+
+thead {
+  background-color: #002244;
+  color: white;
+}
+
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  word-wrap: break-word;  /* ✅ wraps long words */
+  overflow-wrap: break-word;
+  max-width: 200px; /* ✅ prevents cell overflow */
+  vertical-align: middle;
+}
+
+tbody tr:hover {
+  background-color: #f4f6f9;
+}
+
+a {
+  color: #003366;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* === ACTION BUTTONS COLUMN === */
+td.actions {
+  white-space: nowrap; /* ✅ keeps buttons on one line */
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap; /* ✅ allows buttons to wrap on small screens */
+}
+
+/* === BUTTONS === */
+.edit-btn, .delete-btn {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+  min-width: 70px;
+}
+
+.edit-btn {
+  background-color: #2980b9;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #c0392b;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #3498db;
+}
+
+.delete-btn:hover {
+  background-color: #e74c3c;
+}
+
+/* === RESPONSIVE BEHAVIOR === */
+@media (max-width: 768px) {
+  th, td {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  td.actions {
+    justify-content: space-between;
+    gap: 6px;
+  }
+}
+
+
+.msg {
+  margin-top: 12px;
+  font-weight: 500;
+  font-size: 15px;
+  color: #006400;
+  background: #e8f5e9;
+  border-radius: 6px;
+  padding: 8px 12px;
+  width: fit-content;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Optional fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,48 @@
+.footer {
+  background-color: #002244;
+  color: white;
+  text-align: center;
+  padding: 14px 10px;
+  margin-top: 40px;
+  border-top: 2px solid #003366;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer:hover {
+  background-color: #003366;
+}
+
+.status {
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.online {
+  color: #00ff7f;
+  background-color: rgba(0, 255, 127, 0.1);
+}
+
+.offline {
+  color: #ff4747;
+  background-color: rgba(255, 71, 71, 0.1);
+}
+
+.checking {
+  color: #f7c948;
+  background-color: rgba(247, 201, 72, 0.1);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    font-size: 13px;
+    padding: 10px;
+  }
+}

@@ -1,24 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+// import React from "react";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import Navbar from "./components/Common/Navbar";
+// import AdminPage from "./pages/AdminPage";
+// import UserPage from "./pages/UserPage";
+// import AdminLogin from "./pages/AdminLogin";
+// import "./App.css";
+
+// function App() {
+//   return (
+//     <Router>
+//       <Navbar />
+//       <Routes>
+//         <Route path="/" element={<h2 className="home">Welcome to AI Banking Chatbot 💬</h2>} />
+//         <Route path="/admin" element={<AdminPage />} />
+//          <Route path="/admin/login" element={<AdminLogin />} />
+//         <Route path="/user" element={<UserPage />} />
+//       </Routes>
+//     </Router>
+//   );
+// }
+
+// export default App;
+
+
+
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Common/Navbar";
+import Footer from "./components/Common/Footer";
+import AdminPage from "./pages/AdminPage";
+import UserPage from "./pages/UserPage";
+import AdminLogin from "./pages/AdminLogin";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <div style={{ minHeight: "85vh" }}>
+        <Routes>
+          <Route
+            path="/"
+            element={<h2 className="home">Welcome to AI Banking Chatbot 💬</h2>}
+          />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/user" element={<UserPage />} />
+        </Routes>
+      </div>
+      <Footer />
+    </Router>
   );
 }
 

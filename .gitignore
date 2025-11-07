@@ -7,7 +7,16 @@
 
 # testing
 /coverage
+# dependencies
+node_modules/
+package-lock.json
 
+# build output
+dist/
+build/
+
+# environment
+.env
 # production
 /build
 

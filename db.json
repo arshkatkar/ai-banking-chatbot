@@ -1,0 +1,17 @@
+{
+  "admins": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "1234",
+      "token": "fake-jwt-token-123"
+    }
+  ],
+  "docs": [
+    {
+      "id": "1",
+      "link": "https://docs.google.com/document/d/sampledoc1"
+    }
+  ],
+  "branches": []
+}
