@@ -13,7 +13,7 @@ const initializeAdmin = async () => {
       password: 'smartbank@321'
     });
     await defaultAdmin.save();
-    console.log('✅ Default admin created: admin123 / smartbank@321');
+    console.log('Default admin created: admin123 / smartbank@321');
   }
 };
 
@@ -30,13 +30,13 @@ router.post('/login', async (req, res) => {
 
     const admin = await Admin.findOne({ username });
     if (!admin) {
-      console.log(`   ❌ Login failed: User '${username}' not found`);
+      console.log(`   [ERROR] Login failed: User '${username}' not found`);
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
     const isPasswordValid = await admin.comparePassword(password);
     if (!isPasswordValid) {
-      console.log(`   ❌ Login failed: Invalid password for '${username}'`);
+      console.log(`   [ERROR] Login failed: Invalid password for '${username}'`);
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
@@ -46,7 +46,7 @@ router.post('/login', async (req, res) => {
       { expiresIn: '24h' }
     );
 
-    console.log(`   ✅ Login successful: ${username}`);
+    console.log(`   [SUCCESS] Login successful: ${username}`);
 
     res.json({
       message: 'Login successful',
@@ -57,7 +57,7 @@ router.post('/login', async (req, res) => {
       }
     });
   } catch (error) {
-    console.error('   ❌ Login error:', error);
+    console.error('   [ERROR] Login error:', error);
     res.status(500).json({ error: 'Server error during login' });
   }
 });
@@ -84,4 +84,5 @@ router.get('/me', async (req, res) => {
 });
 
 module.exports = router;
+
 

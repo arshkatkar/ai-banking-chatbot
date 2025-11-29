@@ -6,7 +6,7 @@ const Branch = require('../models/Branch');
 router.get('/', async (req, res) => {
   try {
     const branches = await Branch.find().sort({ createdAt: -1 });
-    console.log(`   ✅ Found ${branches.length} branches`);
+    console.log(`   [SUCCESS] Found ${branches.length} branches`);
     
     // Format response to match frontend expectations (with id field)
     const formattedBranches = branches.map(branch => ({
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
     
     res.json(formattedBranches);
   } catch (error) {
-    console.error('   ❌ Error fetching branches:', error);
+    console.error('   [ERROR] Error fetching branches:', error);
     res.status(500).json({ error: 'Failed to fetch branches' });
   }
 });
@@ -54,7 +54,7 @@ router.post('/', async (req, res) => {
     // Check if IFSC already exists
     const existingBranch = await Branch.findOne({ ifsc: ifsc.toUpperCase() });
     if (existingBranch) {
-      console.log('   ❌ Branch with IFSC already exists');
+      console.log('   [ERROR] Branch with IFSC already exists');
       return res.status(400).json({ error: 'Branch with this IFSC already exists' });
     }
 
@@ -65,7 +65,7 @@ router.post('/', async (req, res) => {
     });
 
     await branch.save();
-    console.log(`   ✅ Branch created: ${branch.name} (${branch.ifsc})`);
+    console.log(`   [SUCCESS] Branch created: ${branch.name} (${branch.ifsc})`);
 
     res.status(201).json({
       id: branch._id.toString(),
@@ -74,7 +74,7 @@ router.post('/', async (req, res) => {
       address: branch.address
     });
   } catch (error) {
-    console.error('   ❌ Error creating branch:', error);
+    console.error('   [ERROR] Error creating branch:', error);
     if (error.code === 11000) {
       return res.status(400).json({ error: 'Branch with this IFSC already exists' });
     }
@@ -109,7 +109,7 @@ router.put('/:id', async (req, res) => {
     branch.address = address.trim();
 
     await branch.save();
-    console.log(`   ✅ Branch updated: ${branch.name} (${branch.ifsc})`);
+    console.log(`   [SUCCESS] Branch updated: ${branch.name} (${branch.ifsc})`);
 
     res.json({
       id: branch._id.toString(),
@@ -133,7 +133,7 @@ router.delete('/:id', async (req, res) => {
     if (!branch) {
       return res.status(404).json({ error: 'Branch not found' });
     }
-    console.log(`   ✅ Branch deleted: ${branch.name} (${branch.ifsc})`);
+    console.log(`   [SUCCESS] Branch deleted: ${branch.name} (${branch.ifsc})`);
     res.json({ message: 'Branch deleted successfully', id: req.params.id });
   } catch (error) {
     console.error('Error deleting branch:', error);
@@ -142,4 +142,5 @@ router.delete('/:id', async (req, res) => {
 });
 
 module.exports = router;
+
 

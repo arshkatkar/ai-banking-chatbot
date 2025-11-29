@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Request logging middleware
 app.use((req, res, next) => {
-  console.log(`\n📥 ${new Date().toLocaleTimeString()} - ${req.method} ${req.path}`);
+  console.log(`\n[REQUEST] ${new Date().toLocaleTimeString()} - ${req.method} ${req.path}`);
   if (req.body && Object.keys(req.body).length > 0) {
     console.log('   Body:', JSON.stringify(req.body, null, 2));
   }
@@ -37,19 +37,19 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ai-ban
 
 mongoose.connect(MONGODB_URI)
   .then(() => {
-    console.log('✅ Connected to MongoDB');
+    console.log('Connected to MongoDB');
   })
   .catch((err) => {
-    console.error('❌ MongoDB connection error:', err);
-    console.log('⚠️  Make sure MongoDB is running or update MONGODB_URI in .env');
+    console.error('MongoDB connection error:', err);
+    console.log('Make sure MongoDB is running or update MONGODB_URI in .env');
   });
 
 // Server
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📝 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
 
 module.exports = app;
